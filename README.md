@@ -145,22 +145,22 @@ The login URL is [https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&resp
 
 ### Existing Accounts for different roles 
 
-#### Casting Assistant
-##### username:  
+### Casting Assistant
+#### username:  
 castingassistant5786@gmail.com  
-##### password:  
+#### password:  
 !castingassistant5786%
 
-#### Casting Director
-##### username:  
+### Casting Director
+#### username:  
 castingdirector4132@gmail.com  
-##### password:  
+#### password:  
 !castingdirector4132%  
 
-#### Casting Producer
-##### username:  
+### Casting Producer
+#### username:  
 castingproducer6879@gmail.com  
-##### password:  
+#### password:  
 !castingproducer6879%  
 
 ## Testing
