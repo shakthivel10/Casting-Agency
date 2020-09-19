@@ -100,7 +100,8 @@ DELETE '/movies/<int:id>'
 - Request Arguments: None
 - Returns: A list of actor objects, where each object has the following properties:  id, name, age, gender and list of movie titles the actor acted in.
 
-Example:  
+Example Respone: GET '/actors'
+``` 
 [
     {
         "age": 45,
@@ -150,13 +151,15 @@ Example:
         "name": "Christopher Walken"
     }
 ]
+```
 
 #### GET '/movies'
 - Fetches a list of all movies in the database
 - Request Arguments: None
 - Returns: A list of movie objects, where each object has the following properties:  id, title, release_date and list of names of actors who acted in in the movie.
 
-Example:
+Example Respone: GET '/movies'
+```
 [
     {
         "actors": [
@@ -187,6 +190,7 @@ Example:
         "title": "Catch Me If You Can"
     }
 ]
+```
 
 #### POST '/actors'
 - Creates and inserts a new actor record into the database
@@ -194,19 +198,43 @@ Example:
     { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
 - Returns: A JSON containing the actor inserted
 
-#### POST '/movie'
+Example Request: POST '/actors'
+``` 
+{
+    "name": "Leonardo DiCaprio",
+    "age": 45,
+    "gender": "Male"
+}
+``` 
+
+#### POST '/movies'
 - Creates and inserts a new movie record into the database
 - Request Body: movie information 
     { "title": <movie_title>, "release_date": <<movie_release_date>}   
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie inserted
 
+Example Request: POST '/movies'
+``` 
+{
+    "release_date": "2002-12-25",
+    "title": "Catch Me If You Can"
+}
+``` 
+
 #### PATCH '/actors/<int:id>'
 - Updates an existing actor record in the database.
 - Request Body: new actor information conatining one or more of the following keys 
     { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
 - Returns: A JSON containing the actor updated
-    
+
+Example Request: PATCH '/actors/1'
+``` 
+{
+    "age":46
+}
+``` 
+
 #### PATCH '/movies/<int:id>'
 - Updates an existing movie record in the database.
 - Request Body: new movie information conatining one or more of the following keys 
@@ -214,13 +242,24 @@ Example:
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie updated
 
+Example Request: PATCH '/movies/1'
+``` 
+{
+    "release_date":"1997-12-25"
+}
+``` 
+
 #### DELETE '/actors/<int:id>'
 - Deletes the actor with given id from the database
 - Returns: the id of the actor succefully deleted
 
+Example Request: DELETE '/actors/1'
+
 #### DELETE '/movies/<int:id>'
 - Deletes the movie with given id from the database
 - Returns: the id of the movie succefully deleted
+
+Example Request: DELETE '/movies/1'
 
 ## Login URL and Exisiting Accounts for different roles
 
