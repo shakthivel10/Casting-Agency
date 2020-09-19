@@ -16,15 +16,6 @@ def create_app(test_config=None):
 
     # db_drop_and_create_all()
 
-    a1 = Actor(name="A", age=30, gender="Male")
-    a1.insert()
-
-    m1 = Movie(title="M", release_date=datetime.datetime(2020, 9, 18))
-    m1.insert()
-
-    c1 = CastedIn(actor_id=1, movie_id=1)
-    c1.insert()
-
     @app.route('/')
     def index():
         return jsonify("Healthy!")
