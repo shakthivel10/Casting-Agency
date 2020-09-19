@@ -37,13 +37,13 @@ This will install all of the required packages we selected within the `requireme
 
 ### Running the server locally
 1. Create a local Postgres database.
-2. Create environment variable DATABASE_URL and set it to database URL.
+2. Create environment variable DATABASE_URL and set it to database URL.   
 Example:
 ```bash
 export DATABASE_URL=postgresql://$USER@localhost:5432/<your_db_name>
 ```
 
-To run the server locally, execute:
+3. To run the server locally, execute:
 
 ```bash
 source setup.sh
@@ -54,15 +54,15 @@ flask run
 ## APIs
 
 ### List of APIs 
-GET '/actors'
-GET '/movies'
-POST '/actors'
-POST '/movies'
-PATCH '/actors/<int:id>'
-PATCH '/movies/<int:id>'
-DELETE '/actors/<int:id>'
-DELETE '/movies/<int:id>'
- 
+GET '/actors'   
+GET '/movies'  
+POST '/actors'  
+POST '/movies'  
+PATCH '/actors/<int:id>'  
+PATCH '/movies/<int:id>'   
+DELETE '/actors/<int:id>'   
+DELETE '/movies/<int:id>'   
+
 All APIs are secured by RBAC, and are available depending on the user's role.  
 
 ### Roles and Accessible APIs
@@ -70,72 +70,72 @@ All APIs are secured by RBAC, and are available depending on the user's role.
 There are three roles: Casting Assistant, Casting Director and Casting Producer.
 Each role has access to the followings APIs.
 
-Casting Assistant
-GET '/actors'
-GET '/movies'
+#### Casting Assistant  
+GET '/actors'  
+GET '/movies'  
 
-Casting Director
-GET '/actors'
-GET '/movies'
-POST '/actors'
-PATCH '/actors/<int:id>'
-PATCH '/movies/<int:id>'
-DELETE '/actors/<int:id>'
+#### Casting Director  
+GET '/actors'   
+GET '/movies'    
+POST '/actors'    
+PATCH '/actors/<int:id>'    
+PATCH '/movies/<int:id>'    
+DELETE '/actors/<int:id>'    
 
-Casting Producer
-GET '/actors'
-GET '/movies'
-POST '/actors'
-POST '/movies'
-PATCH '/actors/<int:id>'
-PATCH '/movies/<int:id>'
-DELETE '/actors/<int:id>'
-DELETE '/movies/<int:id>'
+#### Casting Producer
+GET '/actors'    
+GET '/movies'    
+POST '/actors'    
+POST '/movies'    
+PATCH '/actors/<int:id>'    
+PATCH '/movies/<int:id>'    
+DELETE '/actors/<int:id>'    
+DELETE '/movies/<int:id>'    
 
 
 ### API Documentation
 
-GET '/actors'
+#### GET '/actors'
 - Fetches a list of all actors in the database
 - Request Arguments: None
 - Returns: A list of actor objects, where each object has the following properties:  id, name, age, gender and list of movie titles the actor acted in.
 
-GET '/movies'
+#### GET '/movies'
 - Fetches a list of all movies in the database
 - Request Arguments: None
 - Returns: A list of movie objects, where each object has the following properties:  id, title, release_date and list of names of actors who acted in in the movie.
 
-POST '/actors'
+#### POST '/actors'
 - Creates and inserts a new actor record into the database
 - Request Body: actor information 
     { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
 - Returns: A JSON containing the actor inserted
 
-POST '/movie'
+#### POST '/movie'
 - Creates and inserts a new movie record into the database
 - Request Body: movie information 
     { "title": <movie_title>, "release_date": <<movie_release_date>}
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie inserted
 
-PATCH '/actors/<int:id>'
+#### PATCH '/actors/<int:id>'
 - Updates an existing actor record in the database.
 - Request Body: new actor information conatining one or more of the following keys 
     { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
 - Returns: A JSON containing the actor updated
     
-PATCH '/movies/<int:id>'
+#### PATCH '/movies/<int:id>'
 - Updates an existing movie record in the database.
 - Request Body: new movie information conatining one or more of the following keys 
     { "title": <movie_title>, "release_date": <<movie_release_date>}
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie updated
 
-DELETE '/actors/<int:id>'
+#### DELETE '/actors/<int:id>'
 - Deletes the actor with given id from the database
 - Returns: the id of the actor succefully deleted
 
-DELETE '/movies/<int:id>'
+#### DELETE '/movies/<int:id>'
 - Deletes the movie with given id from the database
 - Returns: the id of the movie succefully deleted
 
@@ -146,30 +146,32 @@ The login URL is [https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&resp
 ### Existing Accounts for different roles 
 
 #### Casting Assistant
-username
-castingassistant5786@gmail.com
-password
+username:  
+castingassistant5786@gmail.com  
+password:  
 !castingassistant5786%
 
 #### Casting Director
-username
-castingdirector4132@gmail.com
-password
-!castingdirector4132%
+username:  
+castingdirector4132@gmail.com  
+password:  
+!castingdirector4132%  
 
 #### Casting Producer
-username 
-castingproducer6879@gmail.com
-password
-!castingproducer6879%
+username:  
+castingproducer6879@gmail.com  
+password:  
+!castingproducer6879%  
 
 ## Testing
-The unit tests are run locally.
+#### The unit tests are run locally.   
 Instructions to run tests:
 1. Create a local database for testing.
-2. Import data from test_db.db 
+2. Import data from test_db.db  
 For Example, if your test database is named casting_agency_test_db:
+```bash
 psql casting_agency_test_db < test_db.db 
+```
 3. Set “LOCAL_TEST_DB_URL“ to the db's url in your python virtual env.
 Example:
 ```bash
