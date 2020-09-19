@@ -69,7 +69,7 @@ class AppTestCases(unittest.TestCase):
 
     def test_create_new_actor(self):
         prev_count = Actor.query.count()
-        request_data = {"name": "keanu reeves", "age": "56", "gender": "male"}
+        request_data = {"name": "Keanu Reeves", "age": "56", "gender": "Male"}
 
         response = self.client().post("/actors", json=request_data,
                                       headers=self.casting_producer_request_header)
@@ -86,7 +86,7 @@ class AppTestCases(unittest.TestCase):
 
     def test_create_new_movie(self):
         prev_count = Movie.query.count()
-        request_data = {"titile": "the matrix", "release_date": "1999-03-31"}
+        request_data = {"title": "La La Land", "release_date": "2016-12-09"}
 
         response = self.client().post("/movies", json=request_data,
                                       headers=self.casting_producer_request_header)
@@ -102,7 +102,7 @@ class AppTestCases(unittest.TestCase):
         self.assertEqual(response.status_code, 400)
 
     def test_update_new_actor(self):
-        request_data = {"age": "57"}
+        request_data = {"age": "46"}
         actor = Actor.query.first()
 
         if actor:
@@ -193,7 +193,7 @@ class AppTestCases(unittest.TestCase):
 
     def test_director_role(self):
         prev_count = Actor.query.count()
-        request_data = {"name": "Tom Hanks", "age": "64", "gender": "male"}
+        request_data = {"name": "Will Smith", "age": "51", "gender": "Male"}
 
         response = self.client().post("/actors", json=request_data,
                                       headers=self.casting_director_request_header)
@@ -205,7 +205,7 @@ class AppTestCases(unittest.TestCase):
 
     def test_director_role_error(self):
         prev_count = Movie.query.count()
-        request_data = {"titile": "Forrest Gump", "release_date": "1994-07-06"}
+        request_data = {"titile": "Joker", "release_date": "2019-10-04"}
 
         response = self.client().post("/movies", json=request_data,
                                       headers=self.casting_director_request_header)
@@ -214,7 +214,7 @@ class AppTestCases(unittest.TestCase):
 
     def test_producer_role(self):
         prev_count = Movie.query.count()
-        request_data = {"titile": "Forrest Gump", "release_date": "1994-07-06"}
+        request_data = {"titile": "Venom", "release_date": "2018-10-05"}
 
         response = self.client().post("/movies", json=request_data,
                                       headers=self.casting_producer_request_header)
