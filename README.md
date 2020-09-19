@@ -1,5 +1,5 @@
 # casting-agency
-This project is a web application of a casting agency, whose goal is to find suitable actors to cast in different movies. It models relationships in SQLAlchemy ORM, implements RESTful APIs and enforces Role Based Access Control (RBAC) on the APIs using Auth0. This application is the capstone project of my Full Stack Web Developer Nanodegree Program. 
+This project is a web application for a casting agency, whose goal is to find suitable actors to cast in different movies. It models relationships in SQLAlchemy ORM, implements RESTful APIs and enforces Role Based Access Control (RBAC) on the APIs using Auth0. This application is the capstone project of my Full Stack Web Developer Nanodegree Program. 
 
 The App is hosted on heroku.  
 URL: [https://web-app-casting-agency.herokuapp.com](https://web-app-casting-agency.herokuapp.com)
@@ -146,21 +146,21 @@ The login URL is [https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&resp
 ### Existing Accounts for different roles 
 
 #### Casting Assistant
-username:  
+##### username:  
 castingassistant5786@gmail.com  
-password:  
+##### password:  
 !castingassistant5786%
 
 #### Casting Director
-username:  
+##### username:  
 castingdirector4132@gmail.com  
-password:  
+##### password:  
 !castingdirector4132%  
 
 #### Casting Producer
-username:  
+##### username:  
 castingproducer6879@gmail.com  
-password:  
+##### password:  
 !castingproducer6879%  
 
 ## Testing
