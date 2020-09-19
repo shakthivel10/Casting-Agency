@@ -1,9 +1,14 @@
 import os
+import sys
 from sqlalchemy import Column, String, create_engine
 from flask_sqlalchemy import SQLAlchemy
 import json
 
-database_path = os.environ['DATABASE_URL']
+
+if sys.argv[0] == "tests.py":  # use local test database for running unit tests
+    database_path = os.environ['LOCAL_TEST_DB_URL']
+else:
+    database_path = os.environ['DATABASE_URL']
 
 db = SQLAlchemy()
 

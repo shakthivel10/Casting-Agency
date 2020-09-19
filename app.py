@@ -91,7 +91,9 @@ def create_app(test_config=None):
     @app.route("/actors", methods=["POST"])
     @requires_auth("post:actor")
     def post_actor(jwt):
-        print(request.json)
+
+        if not request.json:
+            abort(400)
         try:
             if "name" in request.json:
                 name = request.json["name"]
@@ -114,13 +116,10 @@ def create_app(test_config=None):
     @app.route("/movies", methods=["POST"])
     @requires_auth("post:movie")
     def post_movie(jwt):
-        print("here2")
-        print(sys.exc_info())
-        print(request.json)
-        print(sys.exc_info())
+        if not request.json:
+            abort(400)
         try:
             new_movie = Movie()
-            print(request.json)
             if "title" in request.json:
                 title = request.json["title"]
                 new_movie.title = title
@@ -142,6 +141,9 @@ def create_app(test_config=None):
     @app.route("/actors/<id>", methods=["PATCH"])
     @requires_auth("patch:actor")
     def patch_actor(jwt, id=id):
+
+        if not request.json:
+            abort(400)
 
         actor = Actor.query.filter(Actor.id == id).first()
         if not actor:
@@ -170,6 +172,9 @@ def create_app(test_config=None):
     @app.route("/movies/<id>", methods=["PATCH"])
     @requires_auth("patch:movie")
     def patch_movie(jwt, id=id):
+
+        if not request.json:
+            abort(400)
 
         movie = Movie.query.filter(Movie.id == id).first()
 
@@ -220,13 +225,6 @@ def create_app(test_config=None):
             "error": 400,
             "message": "bad request"
         }), 400
-
-    @app.errorhandler(409)
-    def conflict(error):
-        return (jsonify({"success": False,
-                         "error": 409,
-                         "message": "A drink with the same title already exists"}),
-                409)
 
     @app.errorhandler(AuthError)
     def auth_error(error):
