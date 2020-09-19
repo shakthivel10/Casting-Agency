@@ -15,11 +15,13 @@ def create_app(test_config=None):
     setup_db(app)
     cors = CORS(app)
 
+    # uncomment to delete all data in the database
     # db_drop_and_create_all()
 
     @app.route('/')
     def index():
-        return jsonify("Healthy!")
+        return jsonify({"API": "Casting Agency API",
+                        "API Documentation": "https://github.com/shakthivel10/casting-agency/edit/master/README.md"})
 
     @app.route('/actors', methods=["GET"])
     @requires_auth("get:actor")
@@ -54,7 +56,7 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
-    @app.route('/actors/<id>', methods=["DELETE"])
+    @app.route('/actors/<int:id>', methods=["DELETE"])
     @requires_auth("delete:actor")
     def delete_actor(jwt, id=id):
 
@@ -71,7 +73,7 @@ def create_app(test_config=None):
             print(sys.exc_info())
             abort(422)
 
-    @app.route('/movies/<id>', methods=["DELETE"])
+    @app.route('/movies/<int:id>', methods=["DELETE"])
     @requires_auth("delete:movie")
     def delete_movie(jwt, id=id):
 
@@ -138,7 +140,7 @@ def create_app(test_config=None):
             print(sys.exc_info())
             abort(422)
 
-    @app.route("/actors/<id>", methods=["PATCH"])
+    @app.route("/actors/<int:id>", methods=["PATCH"])
     @requires_auth("patch:actor")
     def patch_actor(jwt, id=id):
 
@@ -169,7 +171,7 @@ def create_app(test_config=None):
             print(sys.exc_info())
             abort(422)
 
-    @app.route("/movies/<id>", methods=["PATCH"])
+    @app.route("/movies/<int:id>", methods=["PATCH"])
     @requires_auth("patch:movie")
     def patch_movie(jwt, id=id):
 
