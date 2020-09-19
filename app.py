@@ -14,7 +14,7 @@ def create_app(test_config=None):
     setup_db(app)
     cors = CORS(app)
 
-    db_drop_and_create_all()
+    # db_drop_and_create_all()
 
     a1 = Actor(name="A", age=30, gender="Male")
     a1.insert()
