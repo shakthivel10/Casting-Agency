@@ -100,10 +100,93 @@ DELETE '/movies/<int:id>'
 - Request Arguments: None
 - Returns: A list of actor objects, where each object has the following properties:  id, name, age, gender and list of movie titles the actor acted in.
 
+Example:  
+[
+    {
+        "age": 45,
+        "gender": "Male",
+        "id": 1,
+        "movies": [
+            "Titanic",
+            "Catch Me If You Can"
+        ],
+        "name": "Leonardo DiCaprio"
+    },
+    {
+        "age": 44,
+        "gender": "Female",
+        "id": 2,
+        "movies": [
+            "Titanic"
+        ],
+        "name": "Kate Winslet"
+    },
+    {
+        "age": 64,
+        "gender": "Male",
+        "id": 3,
+        "movies": [
+            "Forrest Gump",
+            "Catch Me If You Can"
+        ],
+        "name": "Tom Hanks"
+    },
+    {
+        "age": 54,
+        "gender": "Female",
+        "id": 4,
+        "movies": [
+            "Forrest Gump"
+        ],
+        "name": "Robin Wright"
+    },
+    {
+        "age": 77,
+        "gender": "Male",
+        "id": 5,
+        "movies": [
+            "Catch Me If You Can"
+        ],
+        "name": "Christopher Walken"
+    }
+]
+
 #### GET '/movies'
 - Fetches a list of all movies in the database
 - Request Arguments: None
 - Returns: A list of movie objects, where each object has the following properties:  id, title, release_date and list of names of actors who acted in in the movie.
+
+Example:
+[
+    {
+        "actors": [
+            "Tom Hanks",
+            "Robin Wright"
+        ],
+        "id": 1,
+        "release_date": "Wed, 06 Jul 1994 00:00:00 GMT",
+        "title": "Forrest Gump"
+    },
+    {
+        "actors": [
+            "Leonardo DiCaprio",
+            "Kate Winslet"
+        ],
+        "id": 2,
+        "release_date": "Fri, 19 Dec 1997 00:00:00 GMT",
+        "title": "Titanic"
+    },
+    {
+        "actors": [
+            "Leonardo DiCaprio",
+            "Tom Hanks",
+            "Christopher Walken"
+        ],
+        "id": 3,
+        "release_date": "Wed, 25 Dec 2002 00:00:00 GMT",
+        "title": "Catch Me If You Can"
+    }
+]
 
 #### POST '/actors'
 - Creates and inserts a new actor record into the database
@@ -114,7 +197,7 @@ DELETE '/movies/<int:id>'
 #### POST '/movie'
 - Creates and inserts a new movie record into the database
 - Request Body: movie information 
-    { "title": <movie_title>, "release_date": <<movie_release_date>}
+    { "title": <movie_title>, "release_date": <<movie_release_date>}   
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie inserted
 
@@ -127,7 +210,7 @@ DELETE '/movies/<int:id>'
 #### PATCH '/movies/<int:id>'
 - Updates an existing movie record in the database.
 - Request Body: new movie information conatining one or more of the following keys 
-    { "title": <movie_title>, "release_date": <<movie_release_date>}
+    { "title": <movie_title>, "release_date": <<movie_release_date>}   
     The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
 - Returns: A JSON containing the movie updated
 
