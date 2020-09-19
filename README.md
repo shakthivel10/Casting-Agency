@@ -201,11 +201,23 @@ Example Respone: GET '/movies'
 Example Request: POST '/actors'
 ``` 
 {
-    "name": "Leonardo DiCaprio",
-    "age": 45,
-    "gender": "Male"
+    "age": 77,
+    "gender": "Male",
+    "name": "Robert De Niro"
 }
 ``` 
+Response
+```
+{
+    "actor": {
+        "age": 77,
+        "gender": "Male",
+        "id": 9,
+        "name": "Robert De Niro"
+    },
+    "success": true
+}
+```
 
 #### POST '/movies'
 - Creates and inserts a new movie record into the database
@@ -217,10 +229,21 @@ Example Request: POST '/actors'
 Example Request: POST '/movies'
 ``` 
 {
-    "release_date": "2002-12-25",
-    "title": "Catch Me If You Can"
+    "release_date": "1976-02-08",
+    "title": "Taxi Driver"
 }
 ``` 
+Response
+```
+{
+    "movie": {
+        "id": 6,
+        "release_date": "Sun, 08 Feb 1976 00:00:00 GMT",
+        "title": "Taxi Driver"
+    },
+    "success": true
+}
+```
 
 #### PATCH '/actors/<int:id>'
 - Updates an existing actor record in the database.
@@ -234,6 +257,18 @@ Example Request: PATCH '/actors/1'
     "age":46
 }
 ``` 
+Response
+```
+{
+    "actor": {
+        "age": 46,
+        "gender": "Male",
+        "id": 1,
+        "name": "Leonardo DiCaprio"
+    },
+    "success": true
+}
+```
 
 #### PATCH '/movies/<int:id>'
 - Updates an existing movie record in the database.
@@ -248,18 +283,43 @@ Example Request: PATCH '/movies/1'
     "release_date":"1997-12-25"
 }
 ``` 
+Response:
+```
+{
+    "movie": {
+        "id": 1,
+        "release_date": "Thu, 25 Dec 1997 00:00:00 GMT",
+        "title": "Forrest Gump"
+    },
+    "success": true
+}
+```
 
 #### DELETE '/actors/<int:id>'
 - Deletes the actor with given id from the database
 - Returns: the id of the actor succefully deleted
 
 Example Request: DELETE '/actors/1'
+Response:
+```
+{
+    "delete": 1,
+    "success": true
+}
+```
 
 #### DELETE '/movies/<int:id>'
 - Deletes the movie with given id from the database
 - Returns: the id of the movie succefully deleted
 
 Example Request: DELETE '/movies/1'
+Response:
+```
+{
+    "delete": 1,
+    "success": true
+}
+```
 
 ## Login URL and Exisiting Accounts for different roles
 
