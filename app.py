@@ -21,7 +21,13 @@ def create_app(test_config=None):
     @app.route('/')
     def index():
         return jsonify({"API": "Casting Agency API",
-                        "API Documentation": "https://github.com/shakthivel10/casting-agency/edit/master/README.md"})
+                        "API Documentation": "https://github.com/shakthivel10/casting-agency/master/README.md"})
+
+    '''
+    Fetches a list of all actors in the database
+    Request Arguments: None
+    Returns: A list of actor objects, where each object has the following properties: id, name, age, gender and list of movie titles the actor acted in.
+    '''
 
     @app.route('/actors', methods=["GET"])
     @requires_auth("get:actor")
@@ -40,6 +46,11 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
+    '''
+    Fetches a list of all movies in the database
+    Request Arguments: None
+    Returns: A list of movie objects, where each object has the following properties: id, title, release_date and list of names of actors who acted in in the movie.
+    '''
     @app.route('/movies', methods=["GET"])
     @requires_auth("get:movie")
     def get_movies(jwt):
@@ -56,6 +67,10 @@ def create_app(test_config=None):
 
         return jsonify(response)
 
+    '''
+    Deletes the actor with given id from the database
+    Returns: the id of the actor succefully deleted 
+    '''
     @app.route('/actors/<int:id>', methods=["DELETE"])
     @requires_auth("delete:actor")
     def delete_actor(jwt, id=id):
@@ -72,7 +87,10 @@ def create_app(test_config=None):
         except:
             print(sys.exc_info())
             abort(422)
-
+    '''
+    Deletes the movie with given id from the database
+    Returns: the id of the movie succefully deleted
+    '''
     @app.route('/movies/<int:id>', methods=["DELETE"])
     @requires_auth("delete:movie")
     def delete_movie(jwt, id=id):
@@ -90,6 +108,11 @@ def create_app(test_config=None):
             print(sys.exc_info())
             abort(422)
 
+    '''
+    Creates and inserts a new actor record into the database
+    Request Body: actor information { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
+    Returns: A JSON containing the actor inserted
+    '''
     @app.route("/actors", methods=["POST"])
     @requires_auth("post:actor")
     def post_actor(jwt):
@@ -114,7 +137,12 @@ def create_app(test_config=None):
         except:
             print(sys.exc_info())
             abort(422)
-
+    '''
+    Creates and inserts a new movie record into the database
+    Request Body: movie information { "title": <movie_title>, "release_date": <<movie_release_date>}
+    The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
+    Returns: A JSON containing the movie inserted
+    '''
     @app.route("/movies", methods=["POST"])
     @requires_auth("post:movie")
     def post_movie(jwt):
@@ -139,7 +167,11 @@ def create_app(test_config=None):
         except:
             print(sys.exc_info())
             abort(422)
-
+    '''
+    Updates an existing actor record in the database.
+    Request Body: new actor information conatining one or more of the following keys { "name": <actor_name>, "age": <actor_age>, "gender": <actor_gender>}
+    Returns: A JSON containing the actor updated
+    '''
     @app.route("/actors/<int:id>", methods=["PATCH"])
     @requires_auth("patch:actor")
     def patch_actor(jwt, id=id):
@@ -170,7 +202,12 @@ def create_app(test_config=None):
         except:
             print(sys.exc_info())
             abort(422)
-
+    '''
+    Updates an existing movie record in the database.
+    Request Body: new movie information conatining one or more of the following keys { "title": <movie_title>, "release_date": <<movie_release_date>}
+    The release date has to a string in the following format: "YYYY-MM-DD", example: “2021-12-31”
+    Returns: A JSON containing the movie updated
+    '''
     @app.route("/movies/<int:id>", methods=["PATCH"])
     @requires_auth("patch:movie")
     def patch_movie(jwt, id=id):
