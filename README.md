@@ -8,14 +8,6 @@ URL: [https://web-app-casting-agency.herokuapp.com](https://web-app-casting-agen
 
 ### Installing Dependencies
 
-#### Python 3.7
-
-Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
-
-#### Virtual Enviornment
-
-We recommend working within a virtual environment whenever using Python for projects. This keeps your dependencies for each project separate and organaized. Instructions for setting up a virual enviornment for your platform can be found in the [python docs](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
-
 #### PIP Dependencies
 
 Once you have your virtual environment setup and running, install dependencies by naviging to the `/backend` directory and running:
@@ -37,7 +29,7 @@ This will install all of the required packages we selected within the `requireme
 
 ### Running the server locally
 1. Create a local Postgres database.
-2. Create environment variable DATABASE_URL and set it to database URL.   
+2. Create environment variable DATABASE_URL and set it to the database's URL.   
 Example:
 ```bash
 export DATABASE_URL=postgresql://$USER@localhost:5432/<your_db_name>
