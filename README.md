@@ -84,6 +84,29 @@ PATCH '/movies/<int:id>'
 DELETE '/actors/<int:id>'    
 DELETE '/movies/<int:id>'    
 
+## Login URL and Exisiting Accounts for different roles
+
+The login URL is [https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&response_type=token&client_id=cH5mkmWqCV94th2fzUDwFDywFgg2VDaD&redirect_uri=https://web-app-casting-agency.herokuapp.com/actors](https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&response_type=token&client_id=cH5mkmWqCV94th2fzUDwFDywFgg2VDaD&redirect_uri=https://web-app-casting-agency.herokuapp.com/actors)
+
+### Existing Accounts for different roles 
+
+### Casting Assistant
+#### username:  
+castingassistant5786@gmail.com  
+#### password:  
+!castingassistant5786%
+
+### Casting Director
+#### username:  
+castingdirector4132@gmail.com  
+#### password:  
+!castingdirector4132%  
+
+### Casting Producer
+#### username:  
+castingproducer6879@gmail.com  
+#### password:  
+!castingproducer6879%  
 
 ### API Documentation
 
@@ -92,7 +115,7 @@ DELETE '/movies/<int:id>'
 - Request Arguments: None
 - Returns: A list of actor objects, where each object has the following properties:  id, name, age, gender and list of movie titles the actor acted in.
 
-Example Respone: GET '/actors'
+Example Response: GET '/actors'
 ``` 
 [
     {
@@ -313,29 +336,7 @@ Response:
 }
 ```
 
-## Login URL and Exisiting Accounts for different roles
 
-The login URL is [https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&response_type=token&client_id=cH5mkmWqCV94th2fzUDwFDywFgg2VDaD&redirect_uri=https://web-app-casting-agency.herokuapp.com/actors](https://dev-5d44q6nn.us.auth0.com/authorize?audience=cast&response_type=token&client_id=cH5mkmWqCV94th2fzUDwFDywFgg2VDaD&redirect_uri=https://web-app-casting-agency.herokuapp.com/actors)
-
-### Existing Accounts for different roles 
-
-### Casting Assistant
-#### username:  
-castingassistant5786@gmail.com  
-#### password:  
-!castingassistant5786%
-
-### Casting Director
-#### username:  
-castingdirector4132@gmail.com  
-#### password:  
-!castingdirector4132%  
-
-### Casting Producer
-#### username:  
-castingproducer6879@gmail.com  
-#### password:  
-!castingproducer6879%  
 
 ## Testing
 #### The unit tests are run locally.   
